@@ -1,21 +1,108 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<main>
+  <!-- search section -->
+ <section class="search-section">
+   <div class="wrapper">
+     <div class="section-holder">
+     <h2>Gif Search</h2>
+     <div class="input-wrapper">
+       <input type="text" class="search-input" [(ngModel)]="searchText" placeholder="What are you looking for ?" />
+       <button type="submit" (click)="getSearchList(searchText);" class="search-box">
+         <i class="fa fa-search"></i>
+       </button>
+     </div>
+     <h3>You can search any gif with our search</h3>
+     <p>Everything you need for your creative projects. websites, banners, presentations, magazines and advertising.</p>
+   </div>
+ </div>
+ </section>
+ <!-- search section end-->
+ <!-- image result section -->
+ <section class="image-result">
+   <div class="container">
+   <div class="masonry-layout">
+       <div class="image-wrapper" *ngFor="let list of searchList;">
+         <img src="{{list.images.downsized_large.url}}" alt="" >
+       </div>
+   </div>
+ </div>
+ </section>
+ <!-- image result section end-->
+</main>
+<footer>
+ <div class="footer-info-section">
+ <div class="container">
+   <div class="newsletter-category-list">
+     <div class="newsletter">
+       <h4><span>Sign up and</span>get free content every week.</h4>
+       <input type="email" class="email" [(ngModel)]="emailId" name="emailValue" placeholder="Enter your email..." pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #emailValue="ngModel" required>
+       <!-- error -->
+       <span *ngIf="showError" class="error">Email-Id is Invalid</span>
+       <button class="btn btn-signup" (click)="sendEmail(emailValue);">Sign Up</button>
+     </div>
+     <div class="category-list">
+       <h5>Browse by categories</h5>
+       <div class="all-list">
+         <ul>
+           <li><a href="">Graphics</a></li>
+           <li><a href="">PSDs</a></li>
+           <li><a href="">Icons</a></li>
+           <li><a href="">Templates</a></li>
+           <li><a href="">Themes</a></li>
+         </ul>
+         <ul>
+           <li><a href="">Addons</a></li>
+           <li><a href="">Fonts</a></li>
+           <li><a href="">Textures</a></li>
+           <li><a href="">Patterns</a></li>
+           <li><a href="">Backgrounds</a></li>
+         </ul>
+         <ul>
+           <li><a href="">Buttons</a></li>
+           <li><a href="">Forms</a></li>
+           <li><a href="">GUI</a></li>
+           <li><a href="">Navigation</a></li>
+           <li><a href="">UI Kits</a></li>
+         </ul>
+         <ul>
+           <li><a href="">Inforgraphics</a></li>
+           <li><a href="">Graphs</a></li>
+           <li><a href="">Logos</a></li>
+           <li><a href="">Vectors</a></li>
+           <li><a href="">Business Cards</a></li>
+        </ul>
+       </div>
+     </div>
+   </div>
+ </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="footer-nav">
+ <div class="container">
+   <div class="navigation">
+      <div class="nav-wrapper">
+         <nav>
+             <ul>
+               <li><a href="">Affiliates</a></li>
+               <li><a href="">Contributors</a></li>
+               <li><a href="">Press/Media</a></li>
+               <li><a href="">Careers</a></li>
+               <li><a href="">About</a></li>
+               <li><a href="">Contact</a></li>
+             </ul>
+           </nav>
+           <h6>Copyright © 2018 myCompany All rights reserved.</h6>
+      </div>
+      <div class="social-icons">
+         <ul>
+           <li><a href=""><i class="fa fa-facebook"></i></a></li>
+           <li><a href=""><i class="fa fa-twitter"></i></a></li>
+           <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+           <li><a href=""><i class="fa fa-rss"></i></a></li>
+         </ul>
+       </div>
+   </div>
+ </div>
+</div>
+</footer>
+
 
 <router-outlet></router-outlet>
